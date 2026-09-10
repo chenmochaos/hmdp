@@ -1,5 +1,9 @@
 # 代码使用说明(本项目来自b站[黑马程序员](https://space.bilibili.com/37974444)[redis教程](https://www.bilibili.com/video/BV1cr4y1671t)，仅供参考)
 
+> **本仓库是个人练习分支**：`origin` → [chenmochaos/hmdp](https://github.com/chenmochaos/hmdp)，
+> `upstream` → 原作者 [cs001020/hmdp](https://github.com/cs001020/hmdp)。
+> 本机运行方式、配置约定和已知坑见 [CLAUDE.md](CLAUDE.md)，README 以下内容是原教程说明。
+
 项目代码包含2个分支：
 - master : 主分支，包含完整版代码，作为大家的编码参考使用
 - init : 初始化分支，实战篇的初始代码，建议大家以这个分支作为自己开发的基础代码

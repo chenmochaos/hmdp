@@ -15,7 +15,7 @@
 ## 技术栈与版本
 
 - Spring Boot 2.7.4 / Spring 5.3.23
-- MyBatis-Plus 3.5.2、MySQL 8.4、Redis 7（Lettuce）
+- MyBatis-Plus 3.5.2、MySQL 8.4、Redis 8.0.5（Lettuce 客户端）
 - 编译目标 Java 8，实际运行 JDK 21 / 25
 
 ## 运行
@@ -37,8 +37,10 @@ PORT=8082 node serve.js                # 8080 被占用时
 打开 http://localhost:8080 —— 静态页面由 `serve.js` 托管，`/api/*` 反代到后端 8081。
 
 `serve.js` 替代了课程里那份 **Windows 版 nginx**（`src/main/resources/nginx-1.18.0/nginx.exe`，
-Linux 上跑不了）。用 Node 内置 http 模块实现，零依赖。**本机 8080 已被系统 `tomcat10.service`
-占用（开机自启），所以实际用 8082。**
+Linux 上跑不了）。用 Node 内置 http 模块实现，零依赖。
+
+8080 若被占用（例如系统自带的 `tomcat10.service`），`serve.js` 会打印换端口提示，
+用 `PORT=<端口> node serve.js` 即可，功能不受影响 —— 前端所有请求走相对路径 `/api`。
 
 ## 配置与密钥
 
