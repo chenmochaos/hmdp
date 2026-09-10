@@ -36,8 +36,10 @@ PORT=8082 node serve.js                # 8080 被占用时
 
 打开 http://localhost:8080 —— 静态页面由 `serve.js` 托管，`/api/*` 反代到后端 8081。
 
-`serve.js` 替代了课程里那份 **Windows 版 nginx**（`src/main/resources/nginx-1.18.0/nginx.exe`，
-Linux 上跑不了）。用 Node 内置 http 模块实现，零依赖。
+`serve.js` 替代了课程里那份 **Windows 版 nginx**（Linux 上跑不了）。用 Node 内置 http 模块实现，
+零依赖。`src/main/resources/nginx-1.18.0/` 里保留的是 `html/hmdp`（前端静态文件，`serve.js` 实际
+使用的部分）和 `conf/nginx.conf`（原始配置，供参考）；其中的 `nginx.exe` 与 `nginx-1.18.0.zip`
+已删除。
 
 8080 若被占用（例如系统自带的 `tomcat10.service`），`serve.js` 会打印换端口提示，
 用 `PORT=<端口> node serve.js` 即可，功能不受影响 —— 前端所有请求走相对路径 `/api`。
