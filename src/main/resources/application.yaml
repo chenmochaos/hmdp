@@ -3,15 +3,18 @@ server:
 spring:
   application:
     name: hmdp
+  config:
+    # 读取项目根目录的 .env（本地密钥，已在 .gitignore 中忽略，不进仓库）
+    import: optional:file:.env[.properties]
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/hmdp?useSSL=false&serverTimezone=UTC
-    username: root
-    password: ???
+    username: dev
+    password: ${MYSQL_PASSWORD:}
   redis:
-    host: 192.168.150.101
+    host: 127.0.0.1
     port: 6379
-    password: ???
+    password:
     lettuce:
       pool:
         max-active: 10

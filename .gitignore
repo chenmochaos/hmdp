@@ -1,5 +1,8 @@
 HELP.md
 target/
+
+### 本地密钥（不进仓库）###
+.env
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
