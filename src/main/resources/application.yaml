@@ -7,8 +7,12 @@ spring:
     # 读取项目根目录的 .env（本地密钥，已在 .gitignore 中忽略，不进仓库）
     import: optional:file:.env[.properties]
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/hmdp?useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # allowPublicKeyRetrieval=true 必需：dev 用户是 caching_sha2_password，
+    # 服务端认证缓存冷掉时（MySQL 重启 / FLUSH PRIVILEGES）会要求全量认证，
+    # 而 useSSL=false 下驱动必须向服务端索取 RSA 公钥来加密密码，默认被拒 ——
+    # 表现为 "Public Key Retrieval is not allowed"，只在冷缓存后的第一个连接上出现。
+    url: jdbc:mysql://127.0.0.1:3306/hmdp?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: dev
     password: ${MYSQL_PASSWORD:}
   redis:
